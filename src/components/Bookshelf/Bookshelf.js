@@ -10,7 +10,7 @@ class Bookshelf extends Component {
       <div className="bookshelf">
         <h2 className="bookshelf-title">{this.props.name}</h2>
         <div className="bookshelf-books">
-          <BooksGrid books={this.props.books}/>
+          <BooksGrid onChangeBookList={this.props.onChangeBookList} books={this.props.books}/>
         </div>
       </div>
     )
@@ -19,7 +19,7 @@ class Bookshelf extends Component {
 
 }
 
-Bookshelf.PropTypes = {
+Bookshelf.propTypes = {
   name: PropTypes.string.isRequired,
   books: PropTypes.array.isRequired
 };

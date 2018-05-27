@@ -9,7 +9,7 @@ class BooksGrid extends Component {
       <ol className="books-grid">
         {this.props.books.map((book, idx) => {
           return (
-            <Book {...book} key={`bg_${idx}`} />
+            <Book onChangeBookList={this.props.onChangeBookList} {...book} key={`bg_${idx}`} />
           )
         })}
       </ol>
@@ -17,7 +17,7 @@ class BooksGrid extends Component {
   }
 }
 
-BooksGrid.PropTypes = {
+BooksGrid.propTypes = {
   books: PropTypes.array.isRequired
 };
 
