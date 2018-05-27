@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import BooksGrid from '../BooksGrid/BooksGrid';
+import Bookshelf from '../Bookshelf/Bookshelf';
 
 export default class BooksOverview extends Component {
 
@@ -47,24 +47,9 @@ export default class BooksOverview extends Component {
         </div>
         <div className="list-books-content">
           <div>
-            <div className="bookshelf">
-              <h2 className="bookshelf-title">Currently Reading</h2>
-              <div className="bookshelf-books">
-                <BooksGrid books={currentlyReading}/>
-              </div>
-            </div>
-            <div className="bookshelf">
-              <h2 className="bookshelf-title">Want to Read</h2>
-              <div className="bookshelf-books">
-                <BooksGrid books={wantToRead} />
-              </div>
-            </div>
-            <div className="bookshelf">
-              <h2 className="bookshelf-title">Read</h2>
-              <div className="bookshelf-books">
-                <BooksGrid books={read} />
-              </div>
-            </div>
+            <Bookshelf name="Currently Reading" books={currentlyReading} />
+            <Bookshelf name="Want To Read" books={wantToRead} />
+            <Bookshelf name="Read" books={read} />
           </div>
         </div>
         <div className="open-search">
