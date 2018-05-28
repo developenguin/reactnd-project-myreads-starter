@@ -13,9 +13,9 @@ export default class BooksOverview extends Component {
         </div>
         <div className="list-books-content">
           <div>
-            <Bookshelf onChangeBookList={this.props.onChangeBookList} name="Currently Reading" books={this.props.books.filter(book => book.collection === 'currentlyReading')} />
-            <Bookshelf onChangeBookList={this.props.onChangeBookList} name="Want To Read" books={this.props.books.filter(book => book.collection === 'wantToRead' )} />
-            <Bookshelf onChangeBookList={this.props.onChangeBookList} name="Read" books={this.props.books.filter(book => book.collection === 'read' )} />
+            <Bookshelf onChangeBookList={this.props.onChangeBookList} name="Currently Reading" books={this.props.books.filter(book => book.shelf === 'currentlyReading')} />
+            <Bookshelf onChangeBookList={this.props.onChangeBookList} name="Want To Read" books={this.props.books.filter(book => book.shelf === 'wantToRead' )} />
+            <Bookshelf onChangeBookList={this.props.onChangeBookList} name="Read" books={this.props.books.filter(book => book.shelf === 'read' )} />
           </div>
         </div>
         <div className="open-search">

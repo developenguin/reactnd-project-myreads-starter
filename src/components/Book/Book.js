@@ -26,11 +26,11 @@ class Book extends Component {
       <li>
         <div className="book">
           <div className="book-top">
-            <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${this.props.backgroundImageUrl})` }}></div>
+            <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${this.props.imageLinks.thumbnail})` }}></div>
             <BookShelfChanger handleChange={this.onChangeBookList}/>
           </div>
           <div className="book-title">{this.props.title}</div>
-          <div className="book-authors">{this.props.author}</div>
+          <div className="book-authors">{this.props.authors.join(', ')}</div>
         </div>
       </li>
     )
@@ -39,9 +39,9 @@ class Book extends Component {
 }
 
 Book.propTypes = {
+  id: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
-  author: PropTypes.string.isRequired,
-  backgroundImageUrl: PropTypes.string.isRequired
+  authors: PropTypes.array.isRequired
 };
 
 export default Book;
