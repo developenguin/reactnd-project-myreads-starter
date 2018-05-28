@@ -15,7 +15,7 @@ class Book extends Component {
 
     this.props.onChangeBookList({
       listValue: evt.target.value,
-      bookTitle: this.props.title
+      bookId: this.props.id
     });
 
   }
