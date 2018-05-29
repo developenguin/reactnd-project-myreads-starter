@@ -51,7 +51,7 @@ export default class SearchPage extends Component {
           </div>
         </div>
         <div className="search-books-results">
-          <BooksGrid books={this.state.searchResults}/>
+          <BooksGrid onChangeBookList={this.props.onChangeBookList} books={this.state.searchResults}/>
         </div>
       </div>
     )
