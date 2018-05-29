@@ -29,7 +29,7 @@ class BooksApp extends React.Component {
 
   onChangeBookList(evtData) {
 
-    const changedBook = evtData.book,
+    const changedBook = {...evtData.book},
           listValue = evtData.listValue,
           books = this.state.books;
 
