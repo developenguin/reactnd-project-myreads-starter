@@ -29,12 +29,18 @@ class BooksApp extends React.Component {
 
   onChangeBookList(evtData) {
 
-    const { bookId, listValue } = evtData,
-          books = this.state.books,
+    const changedBook = evtData.book,
+          listValue = evtData.listValue,
+          books = this.state.books;
 
-          newBooks = books.map(book => {
+    BooksAPI.update(changedBook, listValue)
+      .then(() => {
 
-            if (book.id !== bookId) {
+        this.setState({
+
+          books: books.map(book => {
+
+            if (changedBook.id !== book.id) {
               return book
             } else {
               return {
@@ -43,11 +49,11 @@ class BooksApp extends React.Component {
               }
             }
 
-          });
+          })
 
-    this.setState({
-      books: newBooks
-    });
+        });
+
+      });
 
   }
 
