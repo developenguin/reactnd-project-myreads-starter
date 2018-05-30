@@ -17,8 +17,6 @@ export default class SearchPage extends Component {
     BooksAPI.search(searchString)
       .then(response => {
 
-        const collectionIds = this.props.collection.map(book => book.id);
-
         this.setState({
 
           searchResults: response.error ? [] : response.map(book => {
