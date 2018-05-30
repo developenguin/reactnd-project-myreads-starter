@@ -27,10 +27,23 @@ class BooksApp extends React.Component {
 
     const changedBook = {...evtData.book},
           listValue = evtData.listValue,
-          books = this.state.books;
+          books = this.state.books,
+          idList = books.map(book => book.id);
 
     BooksAPI.update(changedBook, listValue)
       .then(() => {
+
+        const updatedChangedBook = { shelf: listValue, ...changedBook};
+
+        if (!idList.includes(updatedChangedBook.id)) {
+
+          this.setState({
+            books: [updatedChangedBook, ...books]
+          });
+
+          return;
+
+        }
 
         this.setState({
 

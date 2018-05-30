@@ -15,7 +15,7 @@ class Book extends Component {
 
     this.props.onChangeBookList({
       listValue: evt.target.value,
-      book: this.props
+      book: this.props.bookData
     });
 
   }
@@ -26,11 +26,11 @@ class Book extends Component {
       <li>
         <div className="book">
           <div className="book-top">
-            <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${this.props.imageLinks ? this.props.imageLinks.thumbnail : ''})` }}></div>
-            <BookShelfChanger defaultValue={this.props.shelf} handleChange={this.onChangeBookList}/>
+            <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${this.props.bookData.imageLinks ? this.props.bookData.imageLinks.thumbnail : ''})` }}></div>
+            <BookShelfChanger defaultValue={this.props.bookData.shelf} handleChange={this.onChangeBookList}/>
           </div>
-          <div className="book-title">{this.props.title}</div>
-          <div className="book-authors">{this.props.authors && this.props.authors.join(', ')}</div>
+          <div className="book-title">{this.props.bookData.title}</div>
+          <div className="book-authors">{this.props.bookData.authors && this.props.bookData.authors.join(', ')}</div>
         </div>
       </li>
     )
@@ -39,7 +39,7 @@ class Book extends Component {
 }
 
 Book.propTypes = {
-  id: PropTypes.string.isRequired
+  bookData: PropTypes.object.isRequired
 };
 
 export default Book;
