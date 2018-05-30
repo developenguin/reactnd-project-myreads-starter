@@ -24,7 +24,7 @@ export default class SearchPage extends Component {
             const match = this.props.collection
               .find(element => element.id === book.id);
 
-            return match ? match : book;
+            return match ? match : {...book, shelf: 'none'};
 
           })
 
