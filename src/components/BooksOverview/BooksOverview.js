@@ -6,6 +6,12 @@ export default class BooksOverview extends Component {
 
   render() {
 
+    const filterBooksByShelf = shelf => {
+      return this.props.books.filter(book => {
+        return book.shelf === shelf;
+      });
+    };
+
     return (
       <div className="list-books">
         <div className="list-books-title">
@@ -13,9 +19,9 @@ export default class BooksOverview extends Component {
         </div>
         <div className="list-books-content">
           <div>
-            <Bookshelf onChangeBookList={this.props.onChangeBookList} name="Currently Reading" books={this.props.books.filter(book => book.shelf === 'currentlyReading')} />
-            <Bookshelf onChangeBookList={this.props.onChangeBookList} name="Want To Read" books={this.props.books.filter(book => book.shelf === 'wantToRead' )} />
-            <Bookshelf onChangeBookList={this.props.onChangeBookList} name="Read" books={this.props.books.filter(book => book.shelf === 'read' )} />
+            <Bookshelf onChangeBookList={this.props.onChangeBookList} name="Currently Reading" books={filterBooksByShelf('currentlyReading')} />
+            <Bookshelf onChangeBookList={this.props.onChangeBookList} name="Want To Read" books={filterBooksByShelf('wantToRead')} />
+            <Bookshelf onChangeBookList={this.props.onChangeBookList} name="Read" books={filterBooksByShelf('read')} />
           </div>
         </div>
         <div className="open-search">
