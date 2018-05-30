@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import BooksGrid from '../BooksGrid/BooksGrid';
 
-class Bookshelf extends Component {
+class Bookshelf extends PureComponent {
 
   render() {
 
