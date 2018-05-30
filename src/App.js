@@ -33,12 +33,10 @@ class BooksApp extends React.Component {
     BooksAPI.update(changedBook, listValue)
       .then(() => {
 
-        const updatedChangedBook = { shelf: listValue, ...changedBook};
-
-        if (!idList.includes(updatedChangedBook.id)) {
+        if (!idList.includes(changedBook.id)) {
 
           this.setState({
-            books: [updatedChangedBook, ...books]
+            books: [{ shelf: listValue, ...changedBook}, ...books]
           });
 
           return;
@@ -46,20 +44,9 @@ class BooksApp extends React.Component {
         }
 
         this.setState({
-
           books: books.map(book => {
-
-            if (changedBook.id === book.id) {
-              return {
-                ...book,
-                shelf: listValue
-              }
-            }
-
-            return book;
-
+            return changedBook.id === book.id ? { ...book, shelf: listValue } : book;
           })
-
         });
 
       });
