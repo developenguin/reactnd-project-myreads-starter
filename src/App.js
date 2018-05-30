@@ -14,20 +14,16 @@ class BooksApp extends React.Component {
       books: []
     };
 
-    this.onChangeBookList = this.onChangeBookList.bind(this);
+  }
+
+  async componentDidMount() {
+
+    const books = await BooksAPI.getAll();
+    this.setState({ books });
 
   }
 
-  componentDidMount() {
-
-    BooksAPI.getAll()
-      .then(books => {
-        this.setState({ books });
-      });
-
-  }
-
-  onChangeBookList(evtData) {
+  onChangeBookList = evtData => {
 
     const changedBook = {...evtData.book},
           listValue = evtData.listValue,
@@ -40,14 +36,14 @@ class BooksApp extends React.Component {
 
           books: books.map(book => {
 
-            if (changedBook.id !== book.id) {
-              return book
-            } else {
+            if (changedBook.id === book.id) {
               return {
                 ...book,
                 shelf: listValue
               }
             }
+
+            return book;
 
           })
 
@@ -55,7 +51,7 @@ class BooksApp extends React.Component {
 
       });
 
-  }
+  };
 
   render() {
     return (
