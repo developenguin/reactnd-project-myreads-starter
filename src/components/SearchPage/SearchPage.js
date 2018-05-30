@@ -5,32 +5,20 @@ import * as BooksAPI from '../../BooksAPI';
 
 export default class SearchPage extends Component {
 
-  constructor(props) {
-    super(props);
+  state = {
+    searchResults: []
+  };
 
-    this.state = {
-      searchResults: []
-    };
-
-    this.onChangeInput = this.onChangeInput.bind(this);
-  }
-
-  onChangeInput(evt) {
+  onChangeInput = evt => {
 
     const searchString = evt.target.value;
 
     BooksAPI.search(searchString)
       .then(response => {
 
-        if (!response.error) {
-          this.setState({
-            searchResults: response
-          });
-        } else {
-          this.setState({
-            searchResults: []
-          })
-        }
+        this.setState({
+          searchResults: response.error ? [] : response
+        });
 
       })
       .catch(() => {
@@ -39,7 +27,7 @@ export default class SearchPage extends Component {
         })
       });
 
-  }
+  };
 
   render() {
     return (
