@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import BooksGrid from '../BooksGrid/BooksGrid';
 import * as BooksAPI from '../../BooksAPI';
+import { Debounce } from 'react-throttle';
 
 export default class SearchPage extends Component {
 
@@ -35,7 +36,9 @@ export default class SearchPage extends Component {
         <div className="search-books-bar">
           <Link className="close-search" to="/">Close</Link>
           <div className="search-books-input-wrapper">
-            <input onChange={this.onChangeInput} type="text" placeholder="Search by title or author"/>
+            <Debounce time="200" handler="onChange">
+              <input onChange={this.onChangeInput} type="text" placeholder="Search by title or author"/>
+            </Debounce>
           </div>
         </div>
         <div className="search-books-results">
