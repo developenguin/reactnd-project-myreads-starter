@@ -4,6 +4,10 @@ import Bookshelf from '../Bookshelf/Bookshelf';
 
 export default class BooksOverview extends Component {
 
+  componentWillReceiveProps() {
+    this.forceUpdate();
+  }
+
   render() {
 
     const filterBooksByShelf = shelf => {
