@@ -7,14 +7,9 @@ import { Route } from 'react-router-dom';
 
 class BooksApp extends React.Component {
 
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      books: []
-    };
-
-  }
+  state = {
+    books: []
+  };
 
   async componentDidMount() {
 

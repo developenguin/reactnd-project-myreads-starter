@@ -1,24 +1,17 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import BookShelfChanger from './BookShelfChanger';
 
-class Book extends Component {
+class Book extends PureComponent {
 
-  constructor(props) {
-    super(props);
-
-    this.onChangeBookList = this.onChangeBookList.bind(this);
-
-  }
-
-  onChangeBookList(evt) {
+  onChangeBookList = evt => {
 
     this.props.onChangeBookList({
       listValue: evt.target.value,
       book: this.props.bookData
     });
 
-  }
+  };
 
   render() {
 
