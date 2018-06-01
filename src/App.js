@@ -25,13 +25,15 @@ class BooksApp extends React.Component {
           books = this.state.books,
           idList = books.map(book => book.id);
 
+    changedBook.shelf = listValue;
+
     BooksAPI.update(changedBook, listValue)
       .then(() => {
 
         if (!idList.includes(changedBook.id)) {
 
           this.setState({
-            books: [{ shelf: listValue, ...changedBook}, ...books]
+            books: [changedBook, ...books]
           });
 
           return;
